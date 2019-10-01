@@ -1,5 +1,6 @@
 // On load will initialize map with array of locations
 function initMap() {
+    const tempElement = document.getElementById("content").innerHTML=`sometext`;
     // Centers the map @ Seabrook
     var center = {lat: 29.5641, lng: -95.0255};
     var locations = [
@@ -25,11 +26,16 @@ function initMap() {
   var image = 'https://www.nps.gov/maps/tools/symbol-library/assets/img/ice-fishing-black-22.svg';  
 //   Display popup window when user clicks on marker
 
-  var infowindow =  new google.maps.InfoWindow({});
+  var contentString = `${tempElement}`;
+
+  var infoWindow =  new google.maps.InfoWindow({
+      content: contentString
+     
+  });
   var marker, count;
-//   Iterates through locations array and display the locations on the map
+//   Iterates through locations array and display the locations & title on the map
   for (count = 0; count < locations.length; count++) {
-      marker = new google.maps.Marker({
+        marker = new google.maps.Marker({
         position: new google.maps.LatLng(locations[count][1], locations[count][2]),
         map: map,
         icon: image,
@@ -38,12 +44,10 @@ function initMap() {
     //   popup functionality when user click on marker for weather info
   google.maps.event.addListener(marker, 'click', (function (marker, count) {
         return function () {
-          infowindow.setContent(locations[count][0]);
-          infowindow.open(map, marker);
+        //   infowindow.setContent(locations[count][0]);
+          infoWindow.open(map, marker);
         }
       })(marker, count));
-      infowindowNew = new google.maps.InfoWindow({
-        content: 'test message'
-    });
+    
     }
   }
