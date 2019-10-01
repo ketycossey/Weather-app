@@ -1,0 +1,8 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+#map {
+    height: 600px;  
+    width: 100%;  
+   }
