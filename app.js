@@ -1,5 +1,5 @@
 // On load will initialize map with array of locations
-const tempElement = document.getElementById("content").innerHTML="Where's my damn weather info";
+
 function initMap() {
   
     // Centers the map @ Seabrook
@@ -27,10 +27,16 @@ function initMap() {
   var image = 'https://www.nps.gov/maps/tools/symbol-library/assets/img/ice-fishing-black-22.svg';  
 //   Display popup window when user clicks on marker
 
-  var contentString = `${tempElement}`;
+  var contentstring = '<div id="seabrook-temp" style=" width:180px; height: 20px; background-color: #EDF5F5;">' +
+  '****Weather-info-PlaceHolder***' + 
+  '</div>'+ '<div id="seabrook-pressure" style=" width:180px; height: 20px; background-color: #EDF5F5;">' +
+  '****Weather-info-PlaceHolder***' + 
+  '</div>'+ '<div id="seabrook-humidity" style=" width:180px; height: 20px; background-color: #EDF5F5;">' +
+  '****Weather-info-PlaceHolder***' + 
+  '</div>';
 
   var infoWindow =  new google.maps.InfoWindow({
-      content: contentString
+      content: contentstring
      
   });
   var marker, count;
@@ -45,39 +51,67 @@ function initMap() {
   google.maps.event.addListener(marker, 'click', (function (marker, count) {
         return function () {
           infoWindow.open(map, marker);
+        displayWeatherData();
         }
       })(marker, count));
     
     }
 }
 
+function displayWeatherData(){
+    document.getElementById("seabrook-temp").innerHTML = "Current Temp: " + `${getSeabrookTemp}` + "F";
+    document.getElementById("seabrook-pressure").innerHTML = "Pressure Index: " + `${getSeabrookPressure}` + " hpa";
+    document.getElementById("seabrook-humidity").innerHTML = "Humidity Index: " + `${getSeabrookHumidity}` + " %"
 
+};
+
+// Seabrook data
 fetch('http://api.openweathermap.org/data/2.5/weather?q=Seabrook,us&apiKey=33f578ee2ce36da02936c7f90dbdb8fa&units=imperial')
+  .then(function(response){
+      let data = response.json();
+      console.log(data)
+      return data;
+  })
+  .then(function(data){
+    getSeabrookTemp = data.main.temp
+    getSeabrookWind = data.wind
+    getSeabrookPressure = data.main.pressure
+    getSeabrookHumidity = data.main.humidity
+    let SeabrookSunRise= data.sys.sunrise
+    let SeabrookSunRiseTime = new Date(SeabrookSunRise*1000);
+    let SeabrookSunSet = data.sys.sunset
+    let SeabrookSunsetTime = new Date(SeabrookSunSet*1000);
+    console.log("SEABROOK")
+    
+    console.log(data.main.temp)
+    console.log(data.wind)
+    console.log(data.main.pressure)
+    console.log(SeabrookSunRiseTime)
+    console.log(SeabrookSunsetTime)
+  })
+  fetch('http://api.openweathermap.org/data/2.5/weather?q=Galveston,us&apiKey=33f578ee2ce36da02936c7f90dbdb8fa&units=imperial')
   .then(function(response){
       let data = response.json();
       return data;
   })
   .then(function(data){
-    getTemp = data.main.temp
-    getWind = data.wind
-    getPressure = data.main.pressure
-    let sunRise= data.sys.sunrise
-    let date = new Date(sunRise*1000);
-    let sunSet = data.sys.sunset
-    let sunsetTime = new Date(sunSet*1000);
+    getGalTemp = data.main.temp
+    getGalWind = data.wind
+    getGalPressure = data.main.pressure
+    let GalSunRise= data.sys.sunrise
+    let GalSunRiseTime = new Date(GalSunRise*1000);
+    let GalSunSet = data.sys.sunset
+    let GalSunsetTime = new Date(GalSunSet*1000);
+    console.log("Galveston")
     console.log(data.main.temp)
     console.log(data.wind)
     console.log(data.main.pressure)
-    console.log(date)
-    console.log(sunsetTime)
-  })
-  .then(function(){
-      displayWeather();
-  });
+    console.log(GalSunRiseTime)
+    console.log(GalSunsetTime)
+  })   
 
- function displayWeather(){
-     tempElement.innerHTML = getTemp;
- };
+
+//   WINDY API 
  const options = {
     // Required: API key
     key: 'U5ky6EE5qJsURIDNwoCeMUqVPxkQDrCb', // REPLACE WITH YOUR KEY !!!
@@ -101,7 +135,4 @@ windyInit(options, windyAPI => {
     const { map } = windyAPI;
     // .map is instance of Leaflet map
 
-    // L.popup()
-    //     .setLatLng([29.5641, -95.0255])
-    //     .openOn(map);
 });

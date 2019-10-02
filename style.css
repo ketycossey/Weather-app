@@ -2,11 +2,11 @@
     box-sizing: border-box;
     margin:0;
 }
-   #map {
+#map {
     height: 50vh;  
     width: 100%;  
-   }
-   #windy {
+}
+#windy {
     width: 100%;
     height: 50vh;
 }
