@@ -1,6 +1,7 @@
 // On load will initialize map with array of locations
+const tempElement = document.getElementById("content").innerHTML="Where's my damn weather info";
 function initMap() {
-    const tempElement = document.getElementById("content").innerHTML=`sometext`;
+  
     // Centers the map @ Seabrook
     var center = {lat: 29.5641, lng: -95.0255};
     var locations = [
@@ -26,10 +27,10 @@ function initMap() {
   var image = 'https://www.nps.gov/maps/tools/symbol-library/assets/img/ice-fishing-black-22.svg';  
 //   Display popup window when user clicks on marker
 
-  var contentString = `${tempElement}`;
+//   var contentString = `${tempElement}`;
 
   var infoWindow =  new google.maps.InfoWindow({
-      content: contentString
+    //   content: contentString
      
   });
   var marker, count;
@@ -39,15 +40,32 @@ function initMap() {
         position: new google.maps.LatLng(locations[count][1], locations[count][2]),
         map: map,
         icon: image,
-        title: locations[count][0]
       });
     //   popup functionality when user click on marker for weather info
   google.maps.event.addListener(marker, 'click', (function (marker, count) {
         return function () {
-        //   infowindow.setContent(locations[count][0]);
           infoWindow.open(map, marker);
         }
       })(marker, count));
     
     }
-  }
+}
+
+
+fetch('http://api.openweathermap.org/data/2.5/weather?q=Seabrook,us&apiKey=33f578ee2ce36da02936c7f90dbdb8fa&units=imperial')
+  .then(function(response){
+      let data = response.json();
+      return data;
+  })
+  .then(function(data){
+    getTemp = data.main.temp
+    console.log(data.main.temp)
+  })
+  .then(function(){
+      displayWeather();
+  });
+
+ function displayWeather(){
+     tempElement.innerHTML = getTemp;
+ };
+
