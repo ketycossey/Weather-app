@@ -9,13 +9,9 @@ var icon =
 "https://openweathermap.org/img/w/"+data.weather[0].icon +".png";
 var temp = Math.floor(data.main.temp);
 var weather = data.weather[0].main;
-var cityid = data.name
-
-
 
 $('.icon').attr('src',icon);
 $('.weather').append(weather);
 $('.temp').append(temp);
-$('.name').append(cityid);
 }
 );
