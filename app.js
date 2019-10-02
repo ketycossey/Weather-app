@@ -27,10 +27,10 @@ function initMap() {
   var image = 'https://www.nps.gov/maps/tools/symbol-library/assets/img/ice-fishing-black-22.svg';  
 //   Display popup window when user clicks on marker
 
-//   var contentString = `${tempElement}`;
+  var contentString = `${tempElement}`;
 
   var infoWindow =  new google.maps.InfoWindow({
-    //   content: contentString
+      content: contentString
      
   });
   var marker, count;
@@ -59,7 +59,17 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Seabrook,us&apiKey=33f57
   })
   .then(function(data){
     getTemp = data.main.temp
+    getWind = data.wind
+    getPressure = data.main.pressure
+    let sunRise= data.sys.sunrise
+    let date = new Date(sunRise*1000);
+    let sunSet = data.sys.sunset
+    let sunsetTime = new Date(sunSet*1000);
     console.log(data.main.temp)
+    console.log(data.wind)
+    console.log(data.main.pressure)
+    console.log(date)
+    console.log(sunsetTime)
   })
   .then(function(){
       displayWeather();
