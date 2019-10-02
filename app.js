@@ -20,7 +20,7 @@ function initMap() {
         ['Matagorda Bay',28.5505, -96.3013 ],
     ];
   var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 10,
+      zoom: 9,
       center: center
     });
     // Fish icon for marker
@@ -78,4 +78,30 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Seabrook,us&apiKey=33f57
  function displayWeather(){
      tempElement.innerHTML = getTemp;
  };
+ const options = {
+    // Required: API key
+    key: 'U5ky6EE5qJsURIDNwoCeMUqVPxkQDrCb', // REPLACE WITH YOUR KEY !!!
 
+    // Put additional console output
+    verbose: true,
+
+    // Optional: Initial state of the map
+    lat: 29.5641,
+    lon: -95.0255,
+    zoom: 9,
+
+    hourFormat: '12h',
+};
+
+// Initialize Windy API
+windyInit(options, windyAPI => {
+    // windyAPI is ready, and contain 'map', 'store',
+    // 'picker' and other usefull stuff
+
+    const { map } = windyAPI;
+    // .map is instance of Leaflet map
+
+    // L.popup()
+    //     .setLatLng([29.5641, -95.0255])
+    //     .openOn(map);
+});
