@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fishweather</title>
+    <link rel= "stylesheet" href="stylemain.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" 
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+</head>
+<body>
+  <div class="header">
+    <img src="fishweather.png"/>
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Houston Fishing Weather
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="indexfishing.html"><b>Fishing Weather</b></a>
+            <!-- <a class="dropdown-item" href="#">Another action</a> -->
+            <a class="dropdown-item" href="index.html">Home</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav></div>
+        <!-- <div class="fullscreen-video-wrap">
+          <video src="Clouds_1_1.mp4.mp4" autoplay="" loop="">
+        </video>
+        </div> -->
+
+  <!-- <div class="d-flex p-2 bd-highlight"> -->
+    <div class="main">
+  <div class="d-flex flex-column justify-contents-center"> 
+     
+    <div class="widget">
+      <a class="weatherwidget-io" href="https://forecast7.com/en/29d76n95d37/houston/?unit=us" data-label_1="HOUSTON" data-label_2="WEATHER" data-theme="original" >HOUSTON WEATHER</a>
+<script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+</script>
+    
+    </div>
+
+      <div id = "weatherContainer">
+          <div id = "weatherDescription">
+              <h1 id = "cityHeader"> </h1>
+              <div id= "weatherMain">
+                  <div id= "temperature"></div>
+                  <div id= "weatherDescriptionHeader"></div>
+                  <div ><img id= "documentIconImg"> </div>
+            </div>
+
+            
+            <hr>
+            <div id= "windSpeed" class = "bottom-details"></div>
+            <div id= "humidity" class = "bottom-details"></div>
+                </div>
+      </div>
+      
+    </div>
+    
+    <div id = "searchContainer">
+        <input class = "searchControl" type = "text" placeholder="City Name or Zipcode" id="searchInput">
+        <button class = "searchControl" id= "searchBtn">Search</button>
+    </div>
+   <div class="darksky">
+      <script type='text/javascript' src='https://darksky.net/widget/graph/29.7848,-95.3614/us12/en.js?width=85%&height=320&title=Houston&textColor=333333&bgColor=ransparent&transparency=false&fontFamily=Default&customFont=&units=us&graph=wind_graph&timeColor=333333&tempColor=333333&lineColor=333333&markerColor=333333'></script>
+   </div>
+  </div> 
+   <script src="script.js"></script>
+
+</body>
+</html>
