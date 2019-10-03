@@ -51,7 +51,8 @@ function initMap() {
   google.maps.event.addListener(marker, 'click', (function (marker, count) {
         return function () {
           infoWindow.open(map, marker);
-        displayWeatherData();
+
+          displayWeatherData();
         }
       })(marker, count));
     
@@ -89,6 +90,8 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Seabrook,us&apiKey=33f57
     console.log(SeabrookSunRiseTime)
     console.log(SeabrookSunsetTime)
   })
+
+  
   fetch('http://api.openweathermap.org/data/2.5/weather?q=Galveston,us&apiKey=33f578ee2ce36da02936c7f90dbdb8fa&units=imperial')
   .then(function(response){
       let data = response.json();

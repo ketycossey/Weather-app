@@ -1,0 +1,78 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" />
+<title>Google static maps</title>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+var sites = [
+	['Darlington', -35.0252820, 138.5630230, 1, 'Darlington, where I am living.'],
+	['Flinders', -35.0188300, 138.5731367, 2, 'Flinders, where I study'],
+	['Glenelg Beach', -34.9803618, 138.5097885, 1, 'Glenelg Beach, no comment.'],
+	['Hindley Street', -34.9232880, 138.5935256, 1,'Hindley Street, a pub dedicated street.']
+];
+var infowindow = null;
+	
+function initialize() {
+	var centerMap = new google.maps.LatLng(45.3517923, 6.3101660);
+	var myOptions = {
+		zoom: 10	,
+		center: centerMap,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	}
+	var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+	
+	setMarkers(map, sites);		
+	setZoom(map, sites);
+	
+	
+	infowindow = new google.maps.InfoWindow({
+		content: "Loading..."
+	});
+}
+/*
+This functions sets the markers (array)
+*/
+function setMarkers(map, markers) {
+	for (var i = 0; i < markers.length; i++) {
+		var site = markers[i];
+		var siteLatLng = new google.maps.LatLng(site[1], site[2]);
+		
+		var marker = new google.maps.Marker({
+			position: siteLatLng,
+			map: map,
+			title: site[0],
+			zIndex: site[3],
+			html: site[4],
+			// Markers drop on the map
+			animation: google.maps.Animation.DROP
+		});
+		
+		google.maps.event.addListener(marker, "click", function () {
+			infowindow.setContent(this.html);
+			infowindow.open(map, this);
+		});
+	}
+}
+/*
+Set the zoom to fit comfortably all the markers in the map
+*/
+function setZoom(map, markers) {
+	var boundbox = new google.maps.LatLngBounds();
+	for ( var i = 0; i < markers.length; i++ )
+	{
+	  boundbox.extend(new google.maps.LatLng(markers[i][1], markers[i][2]));
+	}
+	map.setCenter(boundbox.getCenter());
+	map.fitBounds(boundbox);
+	
+	
+	
+}
+</script>
+</head>
+<body onload="initialize()">
+  <div id="map_canvas"></div>
+</body>
+
+</html>
