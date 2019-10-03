@@ -1,11 +1,19 @@
+
+
 body{
-    background-image: url('default.jpg');
-    background-size: cover;
+    background-image: url('default.jpg') ;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center center; 
     color: white;
     text-shadow: 2px 2x 1px black;
     font-family: "Palatino Linotype", "Book Antiqua", serif;
+
+    margin: 0;
+    padding: 0;
+    text-align: center
 }
 
 .navbar {
@@ -39,28 +47,30 @@ body{
     background-color: rgba(0, 0, 0, 0.25);
     box-shadow: 1px 1px 5px black;
     padding: 15px;
-    border-radius: 10px;
-    position:absolute;
+    border-radius: 15px;
+    /* position:absolute; */
     visibility: hidden;
     align-self: center;
     display: block;
-    font-size:40px;
+    font-size:50px;
     margin-bottom:0;
     margin-left: auto;
     margin-right: auto;
     color: whitesmoke;
 
     display: flex;
+    flex-grow: 1;
     /* background-color:transparent; */
     text-align: center;
     /* height: 200px; */
     /* width:  300px; */
     z-index: 2;
     /* position: absolute; */
-    /* left: 50%;  */
-     /* right: 50%;  */
+    /* left: 30%;   */
+   /* right: 30%;  */
      margin:auto;
-     /* opacity: 0.1 */
+   
+
 
 
 
@@ -69,15 +79,19 @@ body{
     margin: 5px;
     font-size: 42px;
     font-family: 'Lucida Sans', 'Lucida Grande', sans-serif;
-    color: whitesmoke
-
+    color: whitesmoke;
+    text-align: center;
 }
 #searchContainer{
+
     padding: 15px;
-    position:absolute;
+    /* position:absolute;  */
     bottom: 0;
     right: 0;
     align-items: center center;
+    text-align: center;
+    /* left: 35%;
+    right: 35%; */
     
 }
 
@@ -101,28 +115,31 @@ body{
     display:block;
     margin-bottom: 20px;
     color: whitesmoke;
+    text-align: center;
 
 }
 .weatherMain div{
     display:inline-block;
     color: whitesmoke;
+    text-align: center;
 
 }
 #weatherDescriptionHeader{
     font-size: 28px;
     vertical-align: 50%;
     color: whitesmoke;
+    text-align: center;
 
 }
 #temperature{
-    font-size: 38px;
+    font-size: 30%;
     vertical-align: 25%;
     color: whitesmoke;
 }
 .bottomDetails{
     display: block;
     font-size: 24px;
-    text-align: right;
+    text-align: center;
     color: whitesmoke;
 }
 hr{
@@ -131,6 +148,13 @@ hr{
 }
 
 
+
+.documentIconImage{
+    height: 150px;
+    width: 150px;
+
+}
+/* 
 .fullscreen-video-wrap{
     position:absolute;
     top:0;
@@ -155,4 +179,12 @@ hr{
     z-index:1;
     background:#2e6483;
     opacity:0.85;
+  } */
+
+
+  @media screen and (max-width: 800px) {
+    .left, .main, .right {
+      width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+      height: 100%;
+    }
   }

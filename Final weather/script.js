@@ -20,23 +20,23 @@ function searchWeather(searchTerm){
 function init(resultFromServer){
 switch(resultFromServer.weather[0].main){
     case 'Clear':
-        document.body.style.background = 'url("clear.jpg")';
+        document.body.style.backgroundImage = 'url("clear.jpg")';
     break;
     case 'Clouds':
-        document.body.style.background = 'url("cloudy.jpg")';
+        document.body.style.backgroundImage = 'url("cloudy.jpg")';
         break;
 
     case 'Rain':
     case 'Drizzle':
     case 'Mist':
-    document.body.style.background = 'url("Rain.jpg")';
+    document.body.style.backgroundImage = 'url("Rain.jpg")';
     break;
     case 'Thunderstorm':
-    document.body.style.background = 'url("storm.jpg")';
+    document.body.style.backgroundImage = 'url("storm.jpg")';
     break;
 
     case 'Snow': 
-    document.body.style.background = 'url("snow.jpg")';
+    document.body.style.backgroundImage = 'url("snow.jpg")';
     break;
     default:
   break;
@@ -49,14 +49,14 @@ let windSpeedElement = document.getElementById('windSpeed');
 let cityHeader = document.getElementById('cityHeader');
 let weatherIcon = document.getElementById('documentIconImg');
 
-weatherIcon.src ='http://api.openweathermap.org/img/w'+ resultFromServer.weather[0].icon + '.png';
+weatherIcon.src ='http://api.openweathermap.org/img/w/'+ resultFromServer.weather[0].icon + '.png';
 
 let resultDescription = resultFromServer.weather[0].description;
 weatherDescriptionHeader.innerHTML = resultDescription.charAt(0).toUpperCase() + resultDescription.slice(1)
 temperatureElement.innerHTML = Math.floor(resultFromServer.main.temp) + '&#176'
 windSpeedElement.innerHTML = 'Wind at ' + Math.floor(resultFromServer.wind.speed) + ' m/s';
 cityHeader.innerHTML= resultFromServer.name;
-humidityElement.innerHTML = 'Humidity level is at ' + resultFromServer.main.humidity + '%'
+humidityElement.innerHTML = 'Humidity level is ' + resultFromServer.main.humidity + '%'
 
 setPositionForWeatherInfo();
 }
@@ -65,8 +65,8 @@ function setPositionForWeatherInfo(){
     let weatherContainerHeight = weatherContainer.clientHeight;
     let weatherContainerWidth = weatherContainer.clientWidth;
 
-    weatherContainer.style.left  = `calc(50% -${weatherContainerWidth/2}px)`;
-    weatherContainer.style.top = `calc(50% -  ${weatherContainerHeight/1.3}px)`;
+    // weatherContainer.style.left  = `calc(50% -${weatherContainerWidth/2}px)`;
+    // weatherContainer.style.top = `calc(50% -  ${weatherContainerHeight/1.3}px)`;
     weatherContainer.style.visibility = 'visible';
 }
 

@@ -29,7 +29,7 @@
             Fishing Weather
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Fishing Weather</a>
+            <a class="dropdown-item" href="#"><b>Fishing Weather</b></a>
             <!-- <a class="dropdown-item" href="#">Another action</a> -->
             <a class="dropdown-item" href="#">Something else here</a>
           </div>
@@ -37,35 +37,37 @@
       </ul>
     </div>
   </nav>
-
-
-
-        <div class="fullscreen-video-wrap">
+        <!-- <div class="fullscreen-video-wrap">
           <video src="Clouds_1_1.mp4.mp4" autoplay="" loop="">
         </video>
-        </div>
+        </div> -->
 
+  <!-- <div class="d-flex p-2 bd-highlight"> -->
+  <div class="d-flex flex-column justify-contents-center"> 
+     
+    
 
+      <div id = "weatherContainer">
+          <div id = "weatherDescription">
+              <h1 id = "cityHeader"> </h1>
+              <div id= "weatherMain">
+                  <div id= "temperature"></div>
+                  <div id= "weatherDescriptionHeader"></div>
+                  <div ><img id= "documentIconImg"> </div>
+            </div>
 
-
+            
+            <hr>
+            <div id= "windSpeed" class = "bottom-details"></div>
+            <div id= "humidity" class = "bottom-details"></div>
+                </div>
+      </div>
+    </div>
 
     <div id = "searchContainer">
         <input class = "searchControl" type = "text" placeholder="City Name or Zipcode" id="searchInput">
         <button class = "searchControl" id= "searchBtn">Search</button>
     </div>
-    <div id = "weatherContainer">
-        <div id = "weatherDescription">
-            <h1 id = "cityHeader"> </h1>
-            <div id= "weatherMain">
-                <div id= "temperature"></div>
-                <div id= "weatherDescriptionHeader"></div>
-                <div img id= "documentIconImg"></div>
-          </div>
-<hr>
-<div id= "windSpeed" class = "bottom-details"></div>
-<div id= "humidity" class = "bottom-details"></div>
-    </div>
-</div>
 <script src="script.js"></script>
 </body>
 </html>
